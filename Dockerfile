@@ -1,4 +1,4 @@
-FROM nginx:1.17.1-alpine
+FROM nginx:alpine
 LABEL maintainer="Tufan Deveci mail@tufandeveci.com.tr"
 
 # Install wget and install/updates certificates
@@ -26,7 +26,8 @@ COPY network_internal.conf /etc/nginx/
 COPY . /app/
 WORKDIR /app/
 
-RUN chmod +x /app/*.sh
+RUN chmod +x /app/docker-entrypoint.sh
+RUN chmod +x /app/generate-dhparam.sh
 
 
 ENV DOCKER_HOST unix:///tmp/docker.sock
