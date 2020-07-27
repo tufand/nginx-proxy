@@ -1,2 +1,2 @@
 # nginx-proxy
-27.09.2019
+nginx:1.18-alpine
