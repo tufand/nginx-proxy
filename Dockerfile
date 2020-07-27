@@ -1,5 +1,5 @@
-FROM nginx:alpine
-LABEL maintainer="Tufan Deveci mail@tufandeveci.com.tr"
+FROM nginx:1.18-alpine
+LABEL maintainer="Jason Wilder mail@jasonwilder.com"
 
 # Install wget and install/updates certificates
 RUN apk add --no-cache --virtual .run-deps \
@@ -25,10 +25,6 @@ COPY network_internal.conf /etc/nginx/
 
 COPY . /app/
 WORKDIR /app/
-
-RUN chmod +x /app/docker-entrypoint.sh
-RUN chmod +x /app/generate-dhparam.sh
-
 
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
